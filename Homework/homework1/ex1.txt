@@ -1,0 +1,5 @@
+1. We can check variable's type by a python function call 'type'
+2. 3 different examples of invalid names:
+- '123abc' because it start with a number
+- 'Dollar$' because '$' is not valid
+- 'type' because it's Python keyword
