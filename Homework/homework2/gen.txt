@@ -1,4 +1,0 @@
-1. Boolean là ki?u d? li?u logic, ch? nh?n m?t trong 2 giá tr?: True ho?c False
-   Ví d?: 	1+1 == 2 là boolean nh?n giá tr? True
-		a in (1,2,"Táo","Cam") là boolean nh?n giá tr? False
-		
