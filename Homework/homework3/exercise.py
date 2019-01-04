@@ -1,10 +1,12 @@
-def ex1():
+def ex1(turtle):
 # Turtle excercises
     colors = ['red', 'blue', 'brown', 'yellow', 'grey']
     choice = input('''What shape do you want to draw: 
     1. Polygons
     2. Flags
     ''')
+    # turtle.reset()
+    turtle.speed(10)
     while choice not in ("1","2"):
         choice = input("Invalid input. Please enter (1) or (2): ")
     if choice == "1":
@@ -128,9 +130,12 @@ while kt == ("y" or "Y"):
         n0 = int(input("Invalid input. Re-enter: "))    
     if n0 == 1:
         import turtle
-        ex1()
-        sc = turtle.Screen()
-        sc.onclick("stop")
+        sc = turtle.TurtleScreen()
+        t = turtle.Turtle()
+        ex1(t)
+        
+        #sc = t.getscreen()
+        #sc.onclick("stop")
     elif n0 == 2:
         ex2()
     elif n0 == 3:
