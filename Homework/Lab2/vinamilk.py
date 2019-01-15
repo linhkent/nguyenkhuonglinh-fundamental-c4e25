@@ -13,7 +13,7 @@ data = []
 vl = {}
 for tr in tr_list:
     td_list = tr.find_all('td')
-    if len(td_list)>7:
+    if len(td_list)==13:
         for i in range(5):
             a = td_list[i].string
             a = str(a).lstrip()
