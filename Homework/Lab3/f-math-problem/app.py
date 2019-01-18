@@ -49,9 +49,6 @@ class Board(QWidget):
         # TODO: using keyboard to select True/False
 
     def initBoard(self):
-##        self.score = 0
-
-        # Initialize buttons
         trueBtnX = PADDING
         trueBtnY = HEIGHT - PADDING - BUTTON_HEIGHT
 
@@ -73,6 +70,7 @@ class Board(QWidget):
 
         self.correctSound = QSound(".//sound/score.wav")
         self.incorrectSound = QSound(".//sound/gameover.wav")
+
 
     def initData(self):
         self.question = ""
