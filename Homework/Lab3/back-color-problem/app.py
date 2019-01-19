@@ -104,6 +104,7 @@ class GameWindow(QWidget):
         
     def handleYes(self):
         self.chk = True
+        self.score = 0
         self.repaint()
 
     def generate_quiz(self):
