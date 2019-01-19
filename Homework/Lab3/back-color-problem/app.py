@@ -66,19 +66,23 @@ class GameWindow(QWidget):
                 rect = shape['rect']
                 qp.fillRect(rect[0], rect[1], rect[2], rect[3], brush)                      
             qp.setPen(QColor("#2209E2"))
-            qp.setFont(QFont('Arial', 12, QFont.Bold))
+            qp.setFont(QFont('Comic Sans MS', 12, QFont.Bold))
             qp.drawText(QRectF(0, 0, 260, 340), Qt.AlignTop | Qt.AlignRight, 'Score: '+str(self.score))
             qp.setPen(QColor(self.quiz_color))
             qp.setFont(QFont('Times New Roman', 20, QFont.Bold))
             qp.drawText(textRect, Qt.AlignCenter, self.quiz_text)
-        else:    
+        else:   
             self.yes.show()
             self.no.show()         
-            qp.setPen(QColor("#2209E2"))
-            qp.setFont(QFont('Arial', 20, QFont.Bold))
-            qp.drawText(QRectF(0, 60, 260, 60), Qt.AlignCenter, 'GAME OVER')
+            qp.setPen(QColor("#FF0000"))
+            qp.setFont(QFont('Comic Sans MS', 21, QFont.Bold))
+            qp.drawText(QRectF(0, 60, 260, 40), Qt.AlignCenter, 'GAME OVER!!!')
+            qp.setPen(QColor("#00CC00"))
+            qp.setFont(QFont('Comic Sans MS', 17, QFont.Bold))
             qp.drawText(QRectF(0, 60, 260, 130), Qt.AlignCenter, 'Score: '+str(self.score))
-            qp.drawText(QRectF(0, 60, 260, 200), Qt.AlignCenter, 'Play again?')
+            qp.setPen(QColor("#1B4F93"))
+            qp.setFont(QFont('Comic Sans MS', 20, QFont.Bold))
+            qp.drawText(QRectF(0, 60, 260, 220), Qt.AlignCenter, 'Play again?')
         qp.end()
     
     def initBoard(self):
@@ -105,25 +109,26 @@ class GameWindow(QWidget):
     def handleYes(self):
         self.chk = True
         self.score = 0
+        self.correctSound.play()
         self.repaint()
 
     def generate_quiz(self):
-        [self.quiz_text, self.quiz_color, self.quiz_type] = back_color.generate_quiz()
+        [self.quiz_text, self.quiz_color, self.quiz_type] = back_color.generate_quiz(self.shapes)
 
     
     def mouseReleaseEvent(self, mouseEvent):
         x = mouseEvent.x()
         y = mouseEvent.y()
-        if back_color.mouse_press(x, y, self.quiz_text, self.quiz_color, self.quiz_type):
+        if back_color.mouse_press(x, y, self.quiz_text, self.quiz_color, self.quiz_type,self.shapes):
             self.quiz_text = 'Correct'
             self.correctSound.play()
             self.score += 1
         else:                
             self.quiz_text = 'Incorrect'
             self.incorrectSound.play()
-            self.repaint()                
-            time.sleep(1)                
+            self.repaint()                                          
             self.chk = False
+            time.sleep(0.5)
                             
         self.timer.start()
         self.repaint()   
